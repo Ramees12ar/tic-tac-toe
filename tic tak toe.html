@@ -67,6 +67,8 @@
   		document.getElementById("p").innerHTML=b
   		if(parseInt(b%2)!=0){
   			document.getElementById(e).innerHTML=m
+			var q=document.getElementById("r").innerHTML
+          		document.getElementById("r").innerHTML=parseInt(q)+1
   			document.getElementById(e).disabled = true;
   			winner();
   		}
@@ -74,12 +76,16 @@
   			if(m=="X"){
   				var h="O"
   				document.getElementById(e).innerHTML=h
+				var q=document.getElementById("r").innerHTML
+          			document.getElementById("r").innerHTML=parseInt(q)+1
   				document.getElementById(e).disabled = true; 
   				winner();			
   			}
   			if(m=="O"){
   				var r="X"
   				document.getElementById(e).innerHTML=r
+				var q=document.getElementById("r").innerHTML
+          			document.getElementById("r").innerHTML=parseInt(q)+1
   				document.getElementById(e).disabled = true;
   				winner();
   			}
@@ -87,6 +93,7 @@
 
   	}
   	function winner(){
+		var q=document.getElementById("r").innerHTML
   		var m=document.getElementById("data").value;
   		var f1=document.getElementById("1").innerHTML
   		var f2=document.getElementById("2").innerHTML
@@ -104,6 +111,9 @@
   			else if((f1=="O" && f2=="O" && f3=="O")||(f4=="O" && f5=="O" && f6=="O")||(f7=="O" && f8=="O" && f9=="O")||(f1=="O" && f4=="O" && f7=="O")||(f2=="O" && f5=="O" && f8=="O")||(f3=="O" && f6=="O" && f9=="O")||(f1=="O" && f5=="O" && f9=="O")||(f3=="O" && f5=="O" && f7=="O")){
   				alert("Player2 Won the Game...")
   			}
+        		else if(parseInt(q)==9){
+          			alert("Match Draw...")
+        		}
   		}
   		else if(m=="O"){
   			if((f1==m && f2==m && f3==m)||(f4==m && f5==m && f6==m)||(f7==m && f8==m && f9==m)||(f1==m && f4==m && f7==m)||(f2==m && f5==m && f8==m)||(f3==m && f6==m && f9==m)||(f1==m && f5==m && f9==m)||(f3==m && f5==m && f7==m)){
@@ -112,6 +122,9 @@
   			else if((f1=="X" && f2=="X" && f3=="X")||(f4=="X" && f5=="X" && f6=="X")||(f7=="X" && f8=="X" && f9=="X")||(f1=="X" && f4=="X" && f7=="X")||(f2=="X" && f5=="X" && f8=="X")||(f3=="X" && f6=="X" && f9=="X")||(f1=="X" && f5=="X" && f9=="X")||(f3=="X" && f5=="X" && f7=="X")){
   				alert("Player2 Won the Game...")
   			}
+        		else if(parseInt(q)==9){
+          			alert("Match Draw...")
+        		}
   		}
   	}
   	function restart(){
@@ -132,6 +145,7 @@
 			</div>
 			<p id="data" style="display: none;"></p>
 			<p id="p" style="display: none;">0</p>
+			<p id="r" style="display: none;">0</p>
 			<table id="tic">
 				<tr>
 					<td><button onclick="tic(this.id)" id="1"></button></td>
