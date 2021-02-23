@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tic tac toe</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+  	.container{
+  		vertical-align: baseline;
+  	}
+  	table{
+		border-collapse: collapse;
+		margin:auto;
+
+	}
+	table,tr,td{
+		border: 3px solid black;
+		text-align: center;
+		color: black;
+	}
+	td,button{
+		width: 130px;
+		height: 130px;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	.bt button{
+		width:60px;
+		height: 60px;
+		border-width: 5px;
+		font-weight: bold;
+		font-size: 20px;
+	}
+	.bt button[disabled]{
+		background-color: red;
+		width:60px;
+		height: 60px;
+	}
+
+	button[disabled]{
+		width: 130px;
+		height: 130px;
+		background-color: red;
+		color: white;
+	}
+  </style>
+  <script type="text/javascript">
+  	alert("Choose Player1 Choice...!");
+  	function choose(v){
+  		let val=v.id
+  		alert("Player1 chooses :- "+" "+val)
+  		document.getElementById("data").value=val;
+  		document.getElementById(val).disabled = true;
+  	}
+  	var vari="0"
+  	function tic(e){
+  		var a=document.getElementById("p").innerHTML;
+  		var m=document.getElementById("data").value;
+  		if(m==null){
+  			alert("Please Choose X or O")
+  			window.location.reload();
+  		}
+  		c=parseInt(a)
+  		b=eval("c+1");
+  		document.getElementById("p").innerHTML=b
+  		if(parseInt(b%2)!=0){
+  			document.getElementById(e).innerHTML=m
+			var q=document.getElementById("r").innerHTML
+          		document.getElementById("r").innerHTML=parseInt(q)+1
+  			document.getElementById(e).disabled = true;
+  			winner();
+  		}
+  		if(parseInt(b%2)==0){
+  			if(m=="X"){
+  				var h="O"
+  				document.getElementById(e).innerHTML=h
+				var q=document.getElementById("r").innerHTML
+          			document.getElementById("r").innerHTML=parseInt(q)+1
+  				document.getElementById(e).disabled = true; 
+  				winner();			
+  			}
+  			if(m=="O"){
+  				var r="X"
+  				document.getElementById(e).innerHTML=r
+				var q=document.getElementById("r").innerHTML
+          			document.getElementById("r").innerHTML=parseInt(q)+1
+  				document.getElementById(e).disabled = true;
+  				winner();
+  			}
+  		}
+
+  	}
+  	function winner(){
+		var q=document.getElementById("r").innerHTML
+  		var m=document.getElementById("data").value;
+  		var f1=document.getElementById("1").innerHTML
+  		var f2=document.getElementById("2").innerHTML
+  		var f3=document.getElementById("3").innerHTML
+  		var f4=document.getElementById("4").innerHTML
+  		var f5=document.getElementById("5").innerHTML
+  		var f6=document.getElementById("6").innerHTML
+  		var f7=document.getElementById("7").innerHTML
+  		var f8=document.getElementById("8").innerHTML
+  		var f9=document.getElementById("9").innerHTML
+  		if(m=="X"){
+  			if((f1==m && f2==m && f3==m)||(f4==m && f5==m && f6==m)||(f7==m && f8==m && f9==m)||(f1==m && f4==m && f7==m)||(f2==m && f5==m && f8==m)||(f3==m && f6==m && f9==m)||(f1==m && f5==m && f9==m)||(f3==m && f5==m && f7==m)){
+  				alert("Player1 Won the Game...")
+  			}
+  			else if((f1=="O" && f2=="O" && f3=="O")||(f4=="O" && f5=="O" && f6=="O")||(f7=="O" && f8=="O" && f9=="O")||(f1=="O" && f4=="O" && f7=="O")||(f2=="O" && f5=="O" && f8=="O")||(f3=="O" && f6=="O" && f9=="O")||(f1=="O" && f5=="O" && f9=="O")||(f3=="O" && f5=="O" && f7=="O")){
+  				alert("Player2 Won the Game...")
+  			}
+        		else if(parseInt(q)==9){
+          			alert("Match Draw...")
+        		}
+  		}
+  		else if(m=="O"){
+  			if((f1==m && f2==m && f3==m)||(f4==m && f5==m && f6==m)||(f7==m && f8==m && f9==m)||(f1==m && f4==m && f7==m)||(f2==m && f5==m && f8==m)||(f3==m && f6==m && f9==m)||(f1==m && f5==m && f9==m)||(f3==m && f5==m && f7==m)){
+  				alert("Player1 Won the Game...")
+  			}
+  			else if((f1=="X" && f2=="X" && f3=="X")||(f4=="X" && f5=="X" && f6=="X")||(f7=="X" && f8=="X" && f9=="X")||(f1=="X" && f4=="X" && f7=="X")||(f2=="X" && f5=="X" && f8=="X")||(f3=="X" && f6=="X" && f9=="X")||(f1=="X" && f5=="X" && f9=="X")||(f3=="X" && f5=="X" && f7=="X")){
+  				alert("Player2 Won the Game...")
+  			}
+        		else if(parseInt(q)==9){
+          			alert("Match Draw...")
+        		}
+  		}
+  	}
+  	function restart(){
+  		window.location.reload();
+  		}		
+  </script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Welcome to Tic Tac Toe Game</h1>
+			<h3>Hope you enjoy this...</h3>
+			<label>Player1 Choose:  </label>
+			<button style="float: right;height: 50px;font-weight: bold;font-size: 20px;" class="btn btn-warning" onclick="restart()">Restart</button>
+			<div class="bt">
+				<button onclick="choose(this)" id="X">X</button>
+				<button onclick="choose(this)" id="O">O</button>
+			</div>
+			<p id="data" style="display: none;"></p>
+			<p id="p" style="display: none;">0</p>
+			<p id="r" style="display: none;">0</p>
+			<table id="tic">
+				<tr>
+					<td><button onclick="tic(this.id)" id="1"></button></td>
+					<td><button onclick="tic(this.id)" id="2"></button></td>
+					<td><button onclick="tic(this.id)" id="3"></button></td>
+				</tr>
+				<tr>
+					<td><button onclick="tic(this.id)" id="4"></button></td>
+					<td><button onclick="tic(this.id)" id="5"></button></td>
+					<td><button onclick="tic(this.id)" id="6"></button></td>
+				</tr>
+				<tr>
+					<td><button onclick="tic(this.id)" id="7"></button></td>
+					<td><button onclick="tic(this.id)" id="8"></button></td>
+					<td><button onclick="tic(this.id)" id="9"></button></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>
